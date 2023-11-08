@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using Sample.Contractor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHttpClient("", client =>
+builder.Services.AddHttpClient<BmClient>(client =>
 {
     client.BaseAddress = new Uri("baseAddress");
-    // Basic auth with username and password
+    // Setup client with authorization with credentials from configuration
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
         $"{builder.Configuration["BM:Username"]}:{builder.Configuration["BM:Password"]}");
 });
