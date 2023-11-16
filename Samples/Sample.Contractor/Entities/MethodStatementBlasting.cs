@@ -26,9 +26,9 @@ public abstract class MethodStatementBlasting
     /// Title of blast plan
     /// </summary>
     public string Title { get; init; } = null!;
-    
+
     /// <summary>
     /// List of polygons pointing out blast area
     /// </summary>
-    public List<Point> Polygon { get; init; }
+    public List<Polygon> Polygon { get; init; } = new List<Polygon>();
 }
